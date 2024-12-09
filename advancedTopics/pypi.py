@@ -10,6 +10,7 @@
             cmd command to show what can I do: pip
             cmd command to install new package: pip install somePackageName
             cmd command to show witch packages I have: pip list
+            cmd command to delete package: pip uninstall somaPackageName
             packages site: pypi.org
 """
 import pulsar

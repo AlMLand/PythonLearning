@@ -17,6 +17,10 @@ class Animal:
 
 # Dog inherited Animal
 class Dog(Animal):
+    def __init__(self, name: str, breed: str):
+        super().__init__(name)
+        self.breed = breed
+
     def eat(self):
         print(f"{self.name} Dog override the eat method")
 
@@ -33,5 +37,7 @@ class SomeService:
 
 
 service = SomeService()
-service.print_eating_text(Dog("Aa"))
-service.print_eating_text(Cat("Bb"))
+dog = Dog("Aa", "Bb")
+print(dog.breed)
+service.print_eating_text(Dog("Aa", "Bb"))
+service.print_eating_text(Cat("Cc"))
