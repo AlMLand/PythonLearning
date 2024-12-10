@@ -6,8 +6,9 @@ from rockPaperScissors.domain.RockChoice import RockChoice
 from rockPaperScissors.domain.ScissorsChoice import ScissorsChoice
 from rockPaperScissors.domain.StopChoice import StopChoice
 
-__time_to_sleep_one_seconds = 1
-__time_to_sleep_two_seconds = 2
+__ERROR_MESSAGE = "Timur gib bitte nur die Zahlen zwischen 1 und 4 an, Danke dir.\n"
+__TIME_TO_SLEEP_ONE_SECONDS = 1
+__TIME_TO_SLEEP_TWO_SECONDS = 2
 
 stop_choice = StopChoice()
 rock_choice = RockChoice()
@@ -16,8 +17,9 @@ scissors_choice = ScissorsChoice()
 
 
 def user_choice() -> int:
+    number = 0
     try:
-        return int(
+        number = int(
             input(f"Timur, wähle zwischen:\n"
                   f"{rock_choice.sequence()} - {rock_choice.value()}\n"
                   f"{paper_choice.sequence()} - {paper_choice.value()}\n"
@@ -25,9 +27,14 @@ def user_choice() -> int:
                   f"{stop_choice.sequence()} - {stop_choice.value()}\n"
                   f"schreibe hier deine Zahl: ")
         )
+        return number
     except ValueError:
-        print("Timur gib bitte nur die Zahlen zwischen 1 und 4 an, Danke dir.\n")
+        print(__ERROR_MESSAGE)
         user_choice()
+    finally:
+        if number not in range(rock_choice.sequence(), stop_choice.sequence() + 1):
+            print(__ERROR_MESSAGE)
+            user_choice()
 
 
 def compute_and_print_result(user: int, npc: int):
@@ -63,7 +70,7 @@ def start():
         npc = npc_choice()
         delay()
         compute_and_print_result(user, npc)
-        time.sleep(__time_to_sleep_two_seconds)
+        time.sleep(__TIME_TO_SLEEP_TWO_SECONDS)
         user = user_choice()
         stop_play(user)
 
@@ -74,10 +81,10 @@ def npc_choice() -> int:
 
 
 def delay():
-    time.sleep(__time_to_sleep_one_seconds)
+    time.sleep(__TIME_TO_SLEEP_ONE_SECONDS)
     print("     Schnick")
-    time.sleep(__time_to_sleep_one_seconds)
+    time.sleep(__TIME_TO_SLEEP_ONE_SECONDS)
     print("         Schnack")
-    time.sleep(__time_to_sleep_one_seconds)
+    time.sleep(__TIME_TO_SLEEP_ONE_SECONDS)
     print("             Schnuck")
-    time.sleep(__time_to_sleep_one_seconds)
+    time.sleep(__TIME_TO_SLEEP_ONE_SECONDS)
