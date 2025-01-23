@@ -64,15 +64,15 @@ def stop_play(user: int):
 
 
 def start():
-    user = user_choice()
-    stop_play(user)
-    while user != stop_choice.sequence():
+    choice = user_choice()
+    stop_play(choice)
+    while choice != stop_choice.sequence():
         npc = npc_choice()
         delay()
-        compute_and_print_result(user, npc)
+        compute_and_print_result(choice, npc)
         time.sleep(__TIME_TO_SLEEP_TWO_SECONDS)
-        user = user_choice()
-        stop_play(user)
+        choice = user_choice()
+        stop_play(choice)
 
 
 def npc_choice() -> int:
