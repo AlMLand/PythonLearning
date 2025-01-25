@@ -24,3 +24,12 @@ print(subLetters)
 # remove a element
 subLetters.pop(0)
 print(subLetters)
+
+# init list from a word length
+words: list[str] = ["aaa", "aaaa"]
+result: list[str] = ["A" for something in words]
+print(f"{result}")
+
+# list to string
+print(" ".join(result))
+print(", ".join(result))
