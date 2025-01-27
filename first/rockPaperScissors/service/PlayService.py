@@ -1,10 +1,10 @@
 import random
 import time
 
-from rockPaperScissors.domain.PaperChoice import PaperChoice
-from rockPaperScissors.domain.RockChoice import RockChoice
-from rockPaperScissors.domain.ScissorsChoice import ScissorsChoice
-from rockPaperScissors.domain.StopChoice import StopChoice
+from first.rockPaperScissors.domain.PaperChoice import PaperChoice
+from first.rockPaperScissors.domain.RockChoice import RockChoice
+from first.rockPaperScissors.domain.ScissorsChoice import ScissorsChoice
+from first.rockPaperScissors.domain.StopChoice import StopChoice
 
 __ERROR_MESSAGE = "Timur gib bitte nur die Zahlen zwischen 1 und 4 an, Danke dir.\n"
 __TIME_TO_SLEEP_ONE_SECONDS = 1

@@ -1,6 +1,6 @@
 import tkinter as tk
 
-from password_generator.generator import Generator
+from first.password_generator.generator import Generator
 
 
 class GeneratorUI:

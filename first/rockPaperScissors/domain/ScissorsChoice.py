@@ -1,4 +1,4 @@
-from rockPaperScissors.domain.Choice import Choice
+from first.rockPaperScissors.domain.Choice import Choice
 
 
 class ScissorsChoice(Choice):

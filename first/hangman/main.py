@@ -1,6 +1,6 @@
-from hangman.attempt import Attempt
-from hangman.random_word import RandomWord
-from hangman.state import hangman_states
+from first.hangman.attempt import Attempt
+from first.hangman.random_word import RandomWord
+from first.hangman.state import hangman_states
 
 print("welcome to hangman\n")
 

@@ -1,5 +1,5 @@
-from ATMsimulation.atm_menu import handle_menu_item, is_valid_menu_choice, print_menu_items_and_get_user_choice
-from ATMsimulation.user_service import get_current_user_by_name_and_pin
+from first.ATMsimulation.atm_menu import handle_menu_item, is_valid_menu_choice, print_menu_items_and_get_user_choice
+from first.ATMsimulation.user_service import get_current_user_by_name_and_pin
 
 is_atm_activated = False
 

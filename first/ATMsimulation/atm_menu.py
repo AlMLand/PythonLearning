@@ -1,4 +1,4 @@
-from ATMsimulation.user_service import get_user_balance, increase_user_balance, is_user_balance_sufficient, \
+from first.ATMsimulation.user_service import get_user_balance, increase_user_balance, is_user_balance_sufficient, \
     decrease_user_balance
 
 check_balance_id = "1"
