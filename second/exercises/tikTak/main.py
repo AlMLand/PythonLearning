@@ -21,47 +21,41 @@ class RowVertical(Enum):
     THIRD: str = "3"
 
 
-scenarios = ("|___", "|___", "|___|", "|___", "|___", "|___|", "|___", "|___", "|___|")
-win_scenarios = (
-    ((0, "|_X_"), (3, "|_X_"), (6, "|_X_")), ((1, "|_X_"), (4, "|_X_"), (7, "|_X_")),
-    ((2, "|_X_"), (5, "|_X_"), (8, "|_X_")), ((0, "|_X_"), (1, "|_X_"), (2, "|_X_")),
-    ((3, "|_X_"), (4, "|_X_"), (5, "|_X_")), ((6, "|_X_"), (7, "|_X_"), (8, "|_X_")),
-    ((0, "|_X_"), (4, "|_X_"), (8, "|_X_")), ((2, "|_X_"), (4, "|_X_"), (6, "|_X_"))
-)
-lose_scenarios = (
-    ((0, "|_O_"), (3, "|_O_"), (6, "|_O_")), ((1, "|_O_"), (4, "|_O_"), (7, "|_O_")),
-    ((2, "|_O_"), (5, "|_O_"), (8, "|_O_")), ((0, "|_O_"), (1, "|_O_"), (2, "|_O_")),
-    ((3, "|_O_"), (4, "|_O_"), (5, "|_O_")), ((6, "|_O_"), (7, "|_O_"), (8, "|_O_")),
-    ((0, "|_O_"), (4, "|_O_"), (8, "|_O_")), ((2, "|_O_"), (4, "|_O_"), (6, "|_O_"))
-)
-
-first_row = {f"{RowHorizontal.FIRST.value}{RowVertical.FIRST.value}": scenarios[0],
-             f"{RowHorizontal.FIRST.value}{RowVertical.SECOND.value}": scenarios[1],
-             f"{RowHorizontal.FIRST.value}{RowVertical.THIRD.value}": scenarios[2]}
-second_row = {f"{RowHorizontal.SECOND.value}{RowVertical.FIRST.value}": scenarios[3],
-              f"{RowHorizontal.SECOND.value}{RowVertical.SECOND.value}": scenarios[4],
-              f"{RowHorizontal.SECOND.value}{RowVertical.THIRD.value}": scenarios[5]}
-third_row = {f"{RowHorizontal.THIRD.value}{RowVertical.FIRST.value}": scenarios[6],
-             f"{RowHorizontal.THIRD.value}{RowVertical.SECOND.value}": scenarios[7],
-             f"{RowHorizontal.THIRD.value}{RowVertical.THIRD.value}": scenarios[8]}
-keys = {RowHorizontal.FIRST.value: first_row, RowHorizontal.SECOND.value: second_row,
-        RowHorizontal.THIRD.value: third_row}
+class Scenario:
+    scenarios = (
+        [f"{RowHorizontal.FIRST.value}{RowVertical.FIRST.value}", "|___"],
+        [f"{RowHorizontal.FIRST.value}{RowVertical.SECOND.value}", "|___"],
+        [f"{RowHorizontal.FIRST.value}{RowVertical.THIRD.value}", "|___|"],  # 2
+        [f"{RowHorizontal.SECOND.value}{RowVertical.FIRST.value}", "|___"],
+        [f"{RowHorizontal.SECOND.value}{RowVertical.SECOND.value}", "|___"],
+        [f"{RowHorizontal.SECOND.value}{RowVertical.THIRD.value}", "|___|"],  # 5
+        [f"{RowHorizontal.THIRD.value}{RowVertical.FIRST.value}", "|___"],
+        [f"{RowHorizontal.THIRD.value}{RowVertical.SECOND.value}", "|___"],
+        [f"{RowHorizontal.THIRD.value}{RowVertical.THIRD.value}", "|___|"]  # 8
+    )
+    win_scenarios = (
+        ((0, "|_X_"), (3, "|_X_"), (6, "|_X_")), ((1, "|_X_"), (4, "|_X_"), (7, "|_X_")),
+        ((2, "|_X_|"), (5, "|_X_|"), (8, "|_X_|")), ((0, "|_X_"), (1, "|_X_"), (2, "|_X_|")),
+        ((3, "|_X_"), (4, "|_X_"), (5, "|_X_|")), ((6, "|_X_"), (7, "|_X_"), (8, "|_X_|")),
+        ((0, "|_X_"), (4, "|_X_"), (8, "|_X_|")), ((2, "|_X_|"), (4, "|_X_"), (6, "|_X_"))
+    )
+    lose_scenarios = (
+        ((0, "|_O_"), (3, "|_O_"), (6, "|_O_")), ((1, "|_O_"), (4, "|_O_"), (7, "|_O_")),
+        ((2, "|_O_|"), (5, "|_O_|"), (8, "|_O_|")), ((0, "|_O_"), (1, "|_O_"), (2, "|_O_|")),
+        ((3, "|_O_"), (4, "|_O_"), (5, "|_O_|")), ((6, "|_O_"), (7, "|_O_"), (8, "|_O_|")),
+        ((0, "|_O_"), (4, "|_O_"), (8, "|_O_|")), ((2, "|_O_"), (4, "|_O_"), (6, "|_O_"))
+    )
 
 
 def display():
     print(f"   _{RowVertical.FIRST.value}_ _{RowVertical.SECOND.value}_ _{RowVertical.THIRD.value}_")
-    print(f"{RowHorizontal.FIRST.value} " +
-          first_row[f"{RowHorizontal.FIRST.value}{RowVertical.FIRST.value}"] +
-          first_row[f"{RowHorizontal.FIRST.value}{RowVertical.SECOND.value}"] +
-          first_row[f"{RowHorizontal.FIRST.value}{RowVertical.THIRD.value}"])
-    print(f"{RowHorizontal.SECOND.value} " +
-          second_row[f"{RowHorizontal.SECOND.value}{RowVertical.FIRST.value}"] +
-          second_row[f"{RowHorizontal.SECOND.value}{RowVertical.SECOND.value}"] +
-          second_row[f"{RowHorizontal.SECOND.value}{RowVertical.THIRD.value}"])
-    print(f"{RowHorizontal.THIRD.value} " +
-          third_row[f"{RowHorizontal.THIRD.value}{RowVertical.FIRST.value}"] +
-          third_row[f"{RowHorizontal.THIRD.value}{RowVertical.SECOND.value}"] +
-          third_row[f"{RowHorizontal.THIRD.value}{RowVertical.THIRD.value}"])
+    print(f"{RowHorizontal.FIRST.value} " + Scenario.scenarios[0][1] + Scenario.scenarios[1][1] + Scenario.scenarios[2][
+        1])
+    print(
+        f"{RowHorizontal.SECOND.value} " + Scenario.scenarios[3][1] + Scenario.scenarios[4][1] + Scenario.scenarios[5][
+            1])
+    print(f"{RowHorizontal.THIRD.value} " + Scenario.scenarios[6][1] + Scenario.scenarios[7][1] + Scenario.scenarios[8][
+        1])
 
 
 def choice(current_input: str = None, is_correct: bool = True):
@@ -77,9 +71,12 @@ def set_choice(current_input: str):
     if len(current_input) != 2 or is_not_letter(current_input) or is_not_digit(current_input):
         choice(current_input, False)
 
-    row = keys[current_input[0]]
-    current_value = row[current_input]
-    row[current_input] = "".join([c if i != 2 else "X" for i, c in enumerate(current_value)])
+    Scenario.scenarios = tuple(
+        map(
+            lambda item: item if item[0] != current_input else (
+                item[0], "".join([c if i != 2 else "X" for i, c in enumerate(item[1])])), Scenario.scenarios
+        )
+    )
 
 
 def is_not_delimiter(current_input):
@@ -96,14 +93,17 @@ def is_not_letter(current_input):
 
 
 def win_validation() -> bool:
-    for win_sc in win_scenarios:
-        if (win_sc[0][1] == scenarios[win_sc[0][0]] and win_sc[1][1] == scenarios[win_sc[1][0]]
-                and win_sc[2][1] == scenarios[win_sc[2][0]]):
+    for win_sc in Scenario.win_scenarios:
+        if (win_sc[0][1] == Scenario.scenarios[win_sc[0][0]][1] and win_sc[1][1] == Scenario.scenarios[win_sc[1][0]][1]
+                and win_sc[2][1] == Scenario.scenarios[win_sc[2][0]][1]):
+            display()
             print("=) you won =)")
             return False
-    for lose_sc in lose_scenarios:
-        if (lose_sc[0][1] == scenarios[lose_sc[0][0]] and lose_sc[1][1] == scenarios[lose_sc[1][0]]
-                and lose_sc[2][1] == scenarios[lose_sc[2][0]]):
+    for lose_sc in Scenario.lose_scenarios:
+        if (lose_sc[0][1] == Scenario.scenarios[lose_sc[0][0]][1] and lose_sc[1][1] ==
+                Scenario.scenarios[lose_sc[1][0]][1]
+                and lose_sc[2][1] == Scenario.scenarios[lose_sc[2][0]][1]):
+            display()
             print("=( you lose =(")
             return False
     return True
