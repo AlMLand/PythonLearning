@@ -27,12 +27,12 @@ class Scenario:
         self.row_3.display()
 
     def winning(self) -> bool:
-        for win_sc in self.win_scenarios():
+        for win_sc in self._win_scenarios():
             if win_sc:
                 self.display()
                 print("=) you won =)")
                 return False
-        for lose_sc in self.lose_scenarios():
+        for lose_sc in self._lose_scenarios():
             if lose_sc:
                 self.display()
                 print("=( you lose =(")
@@ -40,26 +40,28 @@ class Scenario:
         return True
 
     def update(self, current_input: str, symbol: str):
-        if self.row_1.cell_1.coordinate() == current_input:
-            self.row_1.cell_1.update_value(symbol)
-        if self.row_1.cell_2.coordinate() == current_input:
-            self.row_1.cell_2.update_value(symbol)
-        if self.row_1.cell_3.coordinate() == current_input:
-            self.row_1.cell_3.update_value(symbol)
-        if self.row_2.cell_1.coordinate() == current_input:
-            self.row_2.cell_1.update_value(symbol)
-        if self.row_2.cell_2.coordinate() == current_input:
-            self.row_2.cell_2.update_value(symbol)
-        if self.row_2.cell_3.coordinate() == current_input:
-            self.row_2.cell_3.update_value(symbol)
-        if self.row_3.cell_1.coordinate() == current_input:
-            self.row_3.cell_1.update_value(symbol)
-        if self.row_3.cell_2.coordinate() == current_input:
-            self.row_3.cell_2.update_value(symbol)
-        if self.row_3.cell_3.coordinate() == current_input:
-            self.row_3.cell_3.update_value(symbol)
+        if self.row_1.cell_1.coordinate() == current_input and self.row_1.cell_1.is_free():
+            return self.row_1.cell_1.update_value(symbol)
+        elif self.row_1.cell_2.coordinate() == current_input and self.row_1.cell_2.is_free():
+            return self.row_1.cell_2.update_value(symbol)
+        elif self.row_1.cell_3.coordinate() == current_input and self.row_1.cell_3.is_free():
+            return self.row_1.cell_3.update_value(symbol)
+        elif self.row_2.cell_1.coordinate() == current_input and self.row_2.cell_1.is_free():
+            return self.row_2.cell_1.update_value(symbol)
+        elif self.row_2.cell_2.coordinate() == current_input and self.row_2.cell_2.is_free():
+            return self.row_2.cell_2.update_value(symbol)
+        elif self.row_2.cell_3.coordinate() == current_input and self.row_2.cell_3.is_free():
+            return self.row_2.cell_3.update_value(symbol)
+        elif self.row_3.cell_1.coordinate() == current_input and self.row_3.cell_1.is_free():
+            return self.row_3.cell_1.update_value(symbol)
+        elif self.row_3.cell_2.coordinate() == current_input and self.row_3.cell_2.is_free():
+            return self.row_3.cell_2.update_value(symbol)
+        elif self.row_3.cell_3.coordinate() == current_input and self.row_3.cell_3.is_free():
+            return self.row_3.cell_3.update_value(symbol)
+        else:
+            return False
 
-    def win_scenarios(self):
+    def _win_scenarios(self):
         return (
             (self.row_1.cell_1.value == "|_X_" and self.row_2.cell_1.value == "|_X_"
              and self.row_3.cell_1.value == "|_X_"),
@@ -79,7 +81,7 @@ class Scenario:
              and self.row_3.cell_1.value == "|_X_")
         )
 
-    def lose_scenarios(self):
+    def _lose_scenarios(self):
         return (
             (self.row_1.cell_1.value == "|_O_" and self.row_2.cell_1.value == "|_O_"
              and self.row_3.cell_1.value == "|_O_"),
