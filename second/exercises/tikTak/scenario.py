@@ -1,25 +1,25 @@
+from axisx import AxisX
+from axisy import AxisY
 from cell import Cell
-from column import Column
-from row import Row
 
 
 class Scenario:
     def __init__(self):
-        self.cell_1 = Cell(Row.FIRST, Column.FIRST, "|___")
-        self.cell_2 = Cell(Row.FIRST, Column.SECOND, "|___")
-        self.cell_3 = Cell(Row.FIRST, Column.THIRD, "|___|")
-        self.cell_4 = Cell(Row.SECOND, Column.FIRST, "|___")
-        self.cell_5 = Cell(Row.SECOND, Column.SECOND, "|___")
-        self.cell_6 = Cell(Row.SECOND, Column.THIRD, "|___|")
-        self.cell_7 = Cell(Row.THIRD, Column.FIRST, "|___")
-        self.cell_8 = Cell(Row.THIRD, Column.SECOND, "|___")
-        self.cell_9 = Cell(Row.THIRD, Column.THIRD, "|___|")
+        self.cell_1 = Cell(AxisX.FIRST, AxisY.FIRST, "|___")
+        self.cell_2 = Cell(AxisX.FIRST, AxisY.SECOND, "|___")
+        self.cell_3 = Cell(AxisX.FIRST, AxisY.THIRD, "|___|")
+        self.cell_4 = Cell(AxisX.SECOND, AxisY.FIRST, "|___")
+        self.cell_5 = Cell(AxisX.SECOND, AxisY.SECOND, "|___")
+        self.cell_6 = Cell(AxisX.SECOND, AxisY.THIRD, "|___|")
+        self.cell_7 = Cell(AxisX.THIRD, AxisY.FIRST, "|___")
+        self.cell_8 = Cell(AxisX.THIRD, AxisY.SECOND, "|___")
+        self.cell_9 = Cell(AxisX.THIRD, AxisY.THIRD, "|___|")
 
     def display(self):
-        print(f"   _{self.cell_1.column.value}_ _{self.cell_2.column.value}_ _{self.cell_3.column.value}_")
-        print(f"{self.cell_1.row.value} {self.cell_1.value + self.cell_2.value + self.cell_3.value}")
-        print(f"{self.cell_4.row.value} {self.cell_4.value + self.cell_5.value + self.cell_6.value}")
-        print(f"{self.cell_7.row.value} {self.cell_7.value + self.cell_8.value + self.cell_9.value}")
+        print(f"   _{self.cell_1.axis_y.value}_ _{self.cell_2.axis_y.value}_ _{self.cell_3.axis_y.value}_")
+        print(f"{self.cell_1.axis_x.value} {self.cell_1.value + self.cell_2.value + self.cell_3.value}")
+        print(f"{self.cell_4.axis_x.value} {self.cell_4.value + self.cell_5.value + self.cell_6.value}")
+        print(f"{self.cell_7.axis_x.value} {self.cell_7.value + self.cell_8.value + self.cell_9.value}")
 
     def scenario_validation(self) -> bool:
         for win_sc in self.win_scenarios():

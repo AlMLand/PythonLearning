@@ -1,10 +1,10 @@
-from column import Column
-from row import Row
+from axisx import AxisX
+from axisy import AxisY
 from scenario import Scenario
 
 
 def user_choice(scenario: Scenario, current_input: str = None, is_correct: bool = True):
-    example = f"(example {Row.FIRST.value}{Column.THIRD.value})"
+    example = f"(example {AxisX.FIRST.value}{AxisY.THIRD.value})"
     if is_correct and current_input is None:
         current_input = input(f"do your step {example}: ")
     else:
@@ -19,11 +19,11 @@ def set_choice(scenario: Scenario, current_input: str):
 
 
 def is_not_digit(current_input) -> bool:
-    return current_input[1] not in [Column.FIRST.value, Column.SECOND.value, Column.THIRD.value]
+    return current_input[1] not in [AxisY.FIRST.value, AxisY.SECOND.value, AxisY.THIRD.value]
 
 
 def is_not_letter(current_input) -> bool:
-    return current_input[0].upper() not in [Row.FIRST.value, Row.SECOND.value, Row.THIRD.value]
+    return current_input[0].upper() not in [AxisX.FIRST.value, AxisX.SECOND.value, AxisX.THIRD.value]
 
 
 def enemy_choice():

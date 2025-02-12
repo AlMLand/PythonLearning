@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class Row(Enum):
+class AxisX(Enum):
     FIRST: str = "A"
     SECOND: str = "B"
     THIRD: str = "C"
