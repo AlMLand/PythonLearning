@@ -14,7 +14,7 @@ def start():
         user.choice(scenario)
         if not scenario.winning():
             break
-        
+
         scenario.display()
 
         npc.choice(scenario)
