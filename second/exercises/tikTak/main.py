@@ -1,44 +1,25 @@
-from axisx import AxisX
-from axisy import AxisY
+from npc import Npc
 from scenario import Scenario
-
-
-def user_choice(scenario: Scenario, current_input: str = None, is_correct: bool = True):
-    example = f"(example {AxisX.FIRST.value}{AxisY.THIRD.value})"
-    if is_correct and current_input is None:
-        current_input = input(f"do your step {example}: ")
-    else:
-        current_input = input(f"your input was incorrect \"{current_input}\", try again {example}: ")
-    set_choice(scenario, current_input.upper())
-
-
-def set_choice(scenario: Scenario, current_input: str):
-    if len(current_input) != 2 or is_not_letter(current_input) or is_not_digit(current_input):
-        user_choice(scenario, current_input, False)
-    scenario.update(current_input)
-
-
-def is_not_digit(current_input) -> bool:
-    return current_input[1] not in [AxisY.FIRST.value, AxisY.SECOND.value, AxisY.THIRD.value]
-
-
-def is_not_letter(current_input) -> bool:
-    return current_input[0].upper() not in [AxisX.FIRST.value, AxisX.SECOND.value, AxisX.THIRD.value]
-
-
-def enemy_choice():
-    pass
+from user import User
 
 
 def start():
-    is_run = True
     scenario = Scenario()
+    user = User("user")
+    npc = Npc("npc")
 
-    while is_run:
+    while True:
         scenario.display()
-        user_choice(scenario)
-        enemy_choice()
-        is_run = scenario.scenario_validation()
+
+        user.choice(scenario)
+        if not scenario.winning():
+            break
+        
+        scenario.display()
+
+        npc.choice(scenario)
+        if not scenario.winning():
+            break
 
 
 start()
