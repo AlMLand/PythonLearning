@@ -8,6 +8,9 @@ class Cell:
         self.column = column
         self.value = value
 
+    def update_value(self):
+        self.value = "".join([character if index != 2 else "X" for index, character in enumerate(self.value)])
+
     def coordinate(self):
         return f"{self.row.value}{self.column.value}"
 

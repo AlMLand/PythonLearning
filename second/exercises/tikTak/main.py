@@ -23,8 +23,7 @@ def is_not_digit(current_input) -> bool:
 
 
 def is_not_letter(current_input) -> bool:
-    return (current_input[0].upper()
-            not in [Row.FIRST.value, Row.SECOND.value, Row.THIRD.value])
+    return current_input[0].upper() not in [Row.FIRST.value, Row.SECOND.value, Row.THIRD.value]
 
 
 def enemy_choice():
@@ -34,6 +33,7 @@ def enemy_choice():
 def start():
     is_run = True
     scenario = Scenario()
+
     while is_run:
         scenario.display()
         user_choice(scenario)

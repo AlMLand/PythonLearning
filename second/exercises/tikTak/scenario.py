@@ -15,13 +15,6 @@ class Scenario:
         self.cell_8 = Cell(Row.THIRD, Column.SECOND, "|___")
         self.cell_9 = Cell(Row.THIRD, Column.THIRD, "|___|")
 
-    def get_scenario(self):
-        return (
-            self.cell_1.get_cell(), self.cell_2.get_cell(), self.cell_3.get_cell(), self.cell_4.get_cell(),
-            self.cell_5.get_cell(), self.cell_6.get_cell(), self.cell_7.get_cell(), self.cell_8.get_cell(),
-            self.cell_9.get_cell()
-        )
-
     def display(self):
         print(f"   _{self.cell_1.column.value}_ _{self.cell_2.column.value}_ _{self.cell_3.column.value}_")
         print(f"{self.cell_1.row.value} {self.cell_1.value + self.cell_2.value + self.cell_3.value}")
@@ -43,26 +36,23 @@ class Scenario:
 
     def update(self, current_input: str):
         if self.cell_1.coordinate() == current_input:
-            self.cell_1.value = self.update_value(self.cell_1.value)
+            self.cell_1.update_value()
         if self.cell_2.coordinate() == current_input:
-            self.cell_2.value = self.update_value(self.cell_2.value)
+            self.cell_2.update_value()
         if self.cell_3.coordinate() == current_input:
-            self.cell_3.value = self.update_value(self.cell_3.value)
+            self.cell_3.update_value()
         if self.cell_4.coordinate() == current_input:
-            self.cell_4.value = self.update_value(self.cell_4.value)
+            self.cell_4.update_value()
         if self.cell_5.coordinate() == current_input:
-            self.cell_5.value = self.update_value(self.cell_5.value)
+            self.cell_5.update_value()
         if self.cell_6.coordinate() == current_input:
-            self.cell_6.value = self.update_value(self.cell_6.value)
+            self.cell_6.update_value()
         if self.cell_7.coordinate() == current_input:
-            self.cell_7.value = self.update_value(self.cell_7.value)
+            self.cell_7.update_value()
         if self.cell_8.coordinate() == current_input:
-            self.cell_8.value = self.update_value(self.cell_8.value)
+            self.cell_8.update_value()
         if self.cell_9.coordinate() == current_input:
-            self.cell_9.value = self.update_value(self.cell_9.value)
-
-    def update_value(self, value: str):
-        return "".join([c if i != 2 else "X" for i, c in enumerate(value)])
+            self.cell_9.update_value()
 
     def win_scenarios(self):
         return (
