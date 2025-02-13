@@ -23,35 +23,35 @@ class GameBoard:
         return (self.row_1.is_free_cell_available()
                 or self.row_2.is_free_cell_available() or self.row_3.is_free_cell_available())
 
-    def is_r1c1_r2c1_r3c2_values_equal(self, new_value_1: str, new_value_2: str, new_value_3: str) -> bool:
+    def identical_r1c1_r2c1_r3c2_values(self, new_value_1: str, new_value_2: str, new_value_3: str) -> bool:
         return (self.row_1.cell_1.value == new_value_1
                 and self.row_2.cell_1.value == new_value_2 and self.row_3.cell_1.value == new_value_3)
 
-    def is_r1c2_r2c2_r3c2_values_equal(self, new_value_1: str, new_value_2: str, new_value_3: str) -> bool:
+    def identical_r1c2_r2c2_r3c2_values(self, new_value_1: str, new_value_2: str, new_value_3: str) -> bool:
         return (self.row_1.cell_2.value == new_value_1
                 and self.row_2.cell_2.value == new_value_2 and self.row_3.cell_2.value == new_value_3)
 
-    def is_r1c3_r2c3_r3c3_values_equal(self, new_value_1: str, new_value_2: str, new_value_3: str) -> bool:
+    def identical_r1c3_r2c3_r3c3_values(self, new_value_1: str, new_value_2: str, new_value_3: str) -> bool:
         return (self.row_1.cell_3.value == new_value_1
                 and self.row_2.cell_3.value == new_value_2 and self.row_3.cell_3.value == new_value_3)
 
-    def is_r1c1_r1c2_r1c3_values_equal(self, new_value_1: str, new_value_2: str, new_value_3: str) -> bool:
+    def identical_r1c1_r1c2_r1c3_values(self, new_value_1: str, new_value_2: str, new_value_3: str) -> bool:
         return (self.row_1.cell_1.value == new_value_1
                 and self.row_1.cell_2.value == new_value_2 and self.row_1.cell_3.value == new_value_3)
 
-    def is_r2c1_r2c2_r2c3_values_equal(self, new_value_1: str, new_value_2: str, new_value_3: str) -> bool:
+    def identical_r2c1_r2c2_r2c3_values(self, new_value_1: str, new_value_2: str, new_value_3: str) -> bool:
         return (self.row_2.cell_1.value == new_value_1
                 and self.row_2.cell_2.value == new_value_2 and self.row_2.cell_3.value == new_value_3)
 
-    def is_r3c1_r3c2_r3c3_values_equal(self, new_value_1: str, new_value_2: str, new_value_3: str) -> bool:
+    def identical_r3c1_r3c2_r3c3_values(self, new_value_1: str, new_value_2: str, new_value_3: str) -> bool:
         return (self.row_3.cell_1.value == new_value_1
                 and self.row_3.cell_2.value == new_value_2 and self.row_3.cell_3.value == new_value_3)
 
-    def is_r1c1_r2c2_r3c3_values_equal(self, new_value_1: str, new_value_2: str, new_value_3: str) -> bool:
+    def identical_r1c1_r2c2_r3c3_values(self, new_value_1: str, new_value_2: str, new_value_3: str) -> bool:
         return (self.row_1.cell_1.value == new_value_1
                 and self.row_2.cell_2.value == new_value_2 and self.row_3.cell_3.value == new_value_3)
 
-    def is_r1c3_r2c2_r3c1_values_equal(self, new_value_1: str, new_value_2: str, new_value_3: str) -> bool:
+    def identical_r1c3_r2c2_r3c1_values(self, new_value_1: str, new_value_2: str, new_value_3: str) -> bool:
         return (self.row_1.cell_3.value == new_value_1
                 and self.row_2.cell_2.value == new_value_2 and self.row_3.cell_1.value == new_value_3)
 

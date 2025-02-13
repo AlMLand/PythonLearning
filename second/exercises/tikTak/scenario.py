@@ -30,24 +30,24 @@ class Scenario:
 
     def _win_scenarios(self):
         return (
-            (self.game_board.is_r1c1_r2c1_r3c2_values_equal("|_X_", "|_X_", "|_X_")),
-            (self.game_board.is_r1c2_r2c2_r3c2_values_equal("|_X_", "|_X_", "|_X_")),
-            (self.game_board.is_r1c3_r2c3_r3c3_values_equal("|_X_|", "|_X_|", "|_X_|")),
-            (self.game_board.is_r1c1_r1c2_r1c3_values_equal("|_X_", "|_X_", "|_X_|")),
-            (self.game_board.is_r2c1_r2c2_r2c3_values_equal("|_X_", "|_X_", "|_X_|")),
-            (self.game_board.is_r3c1_r3c2_r3c3_values_equal("|_X_", "|_X_", "|_X_|")),
-            (self.game_board.is_r1c1_r2c2_r3c3_values_equal("|_X_", "|_X_", "|_X_|")),
-            (self.game_board.is_r1c3_r2c2_r3c1_values_equal("|_X_|", "|_X_", "|_X_"))
+            self.game_board.identical_r1c1_r2c1_r3c2_values("|_X_", "|_X_", "|_X_"),
+            self.game_board.identical_r1c2_r2c2_r3c2_values("|_X_", "|_X_", "|_X_"),
+            self.game_board.identical_r1c3_r2c3_r3c3_values("|_X_|", "|_X_|", "|_X_|"),
+            self.game_board.identical_r1c1_r1c2_r1c3_values("|_X_", "|_X_", "|_X_|"),
+            self.game_board.identical_r2c1_r2c2_r2c3_values("|_X_", "|_X_", "|_X_|"),
+            self.game_board.identical_r3c1_r3c2_r3c3_values("|_X_", "|_X_", "|_X_|"),
+            self.game_board.identical_r1c1_r2c2_r3c3_values("|_X_", "|_X_", "|_X_|"),
+            self.game_board.identical_r1c3_r2c2_r3c1_values("|_X_|", "|_X_", "|_X_")
         )
 
     def _lose_scenarios(self):
         return (
-            (self.game_board.is_r1c1_r2c1_r3c2_values_equal("|_O_", "|_O_", "|_O_")),
-            (self.game_board.is_r1c2_r2c2_r3c2_values_equal("|_O_", "|_O_", "|_O_")),
-            (self.game_board.is_r1c3_r2c3_r3c3_values_equal("|_O_|", "|_O_|", "|_O_|")),
-            (self.game_board.is_r1c1_r1c2_r1c3_values_equal("|_O_", "|_O_", "|_O_|")),
-            (self.game_board.is_r2c1_r2c2_r2c3_values_equal("|_O_", "|_O_", "|_O_|")),
-            (self.game_board.is_r3c1_r3c2_r3c3_values_equal("|_O_", "|_O_", "|_O_|")),
-            (self.game_board.is_r1c1_r2c2_r3c3_values_equal("|_O_", "|_O_", "|_O_|")),
-            (self.game_board.is_r1c3_r2c2_r3c1_values_equal("|_O_|", "|_O_", "|_O_"))
+            self.game_board.identical_r1c1_r2c1_r3c2_values("|_O_", "|_O_", "|_O_"),
+            self.game_board.identical_r1c2_r2c2_r3c2_values("|_O_", "|_O_", "|_O_"),
+            self.game_board.identical_r1c3_r2c3_r3c3_values("|_O_|", "|_O_|", "|_O_|"),
+            self.game_board.identical_r1c1_r1c2_r1c3_values("|_O_", "|_O_", "|_O_|"),
+            self.game_board.identical_r2c1_r2c2_r2c3_values("|_O_", "|_O_", "|_O_|"),
+            self.game_board.identical_r3c1_r3c2_r3c3_values("|_O_", "|_O_", "|_O_|"),
+            self.game_board.identical_r1c1_r2c2_r3c3_values("|_O_", "|_O_", "|_O_|"),
+            self.game_board.identical_r1c3_r2c2_r3c1_values("|_O_|", "|_O_", "|_O_")
         )
