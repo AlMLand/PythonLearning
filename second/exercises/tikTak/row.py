@@ -7,5 +7,8 @@ class Row:
         self.cell_2 = cell_2
         self.cell_3 = cell_3
 
+    def get_all_cells(self) -> list[Cell]:
+        return [self.cell_1, self.cell_2, self.cell_3]
+
     def display(self):
         print(f"{self.cell_1.axis_x.value} {self.cell_1.value + self.cell_2.value + self.cell_3.value}")

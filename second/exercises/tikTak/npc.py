@@ -8,4 +8,4 @@ class Npc(Player):
         super().__init__(name, random_choice)
 
     def update_choice(self, scenario: Scenario, current_input: str) -> bool:
-        return scenario.update(current_input, PlaySymbol.symbol_o.value)
+        return scenario.game_board.update_board(current_input, PlaySymbol.symbol_o.value)
