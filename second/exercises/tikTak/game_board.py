@@ -19,6 +19,10 @@ class GameBoard:
             Cell(AxisX.THIRD, AxisY.THIRD, "|___|")
         )
 
+    def is_free_space_available(self) -> bool:
+        return (self.row_1.is_free_cell_available()
+                or self.row_2.is_free_cell_available() or self.row_3.is_free_cell_available())
+
     def is_r1c1_r2c1_r3c2_values_equal(self, new_value_1: str, new_value_2: str, new_value_3: str) -> bool:
         return (self.row_1.cell_1.value == new_value_1
                 and self.row_2.cell_1.value == new_value_2 and self.row_3.cell_1.value == new_value_3)

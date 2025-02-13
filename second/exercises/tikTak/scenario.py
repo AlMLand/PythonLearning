@@ -13,6 +13,9 @@ class Scenario:
         return self.game_board.get_all_rows()
 
     def winning(self) -> bool:
+        if not self.game_board.is_free_space_available():
+            print("!! no winner !!")
+            return False
         for win_sc in self._win_scenarios():
             if win_sc:
                 self.display()
