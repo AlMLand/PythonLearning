@@ -1,8 +1,8 @@
 import random
 from abc import ABC
 
-from axisx import AxisX
-from axisy import AxisY
+from axis_x import AxisX
+from axis_y import AxisY
 from row import Row
 from scenario import Scenario
 
@@ -33,7 +33,7 @@ class Player(ABC):
             current_input = input(f"do your step {example}: ")
         else:
             current_input = input(f"your input was incorrect \"{current_input}\", try again {example}: ")
-            
+
         if not self.set_choice(scenario, current_input.upper()):
             print(f"repeat this step, you choice {current_input} is not possible")
             self.choice(scenario, current_input, False)

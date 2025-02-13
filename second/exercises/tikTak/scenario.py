@@ -1,5 +1,5 @@
-from axisx import AxisX
-from axisy import AxisY
+from axis_x import AxisX
+from axis_y import AxisY
 from cell import Cell
 from row import Row
 
