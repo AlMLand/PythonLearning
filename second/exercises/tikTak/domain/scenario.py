@@ -20,16 +20,22 @@ class Scenario:
             if win_sc:
                 self.display()
                 print("=) you won =)")
-                return False
+                return True
         for lose_sc in self._lose_scenarios():
             if lose_sc:
                 self.display()
                 print("=( you lose =(")
-                return False
+                return True
+
+        return False
+
+    def undecided(self) -> bool:
         if not self.game_board.is_free_space_available():
+            self.display()
             print("!! no winner !!")
-            return False
-        return True
+            return True
+
+        return False
 
     def _win_scenarios(self):
         return (

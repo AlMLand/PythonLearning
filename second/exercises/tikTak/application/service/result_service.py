@@ -20,15 +20,21 @@ class ResultService(ResultPort):
             scenario.display()
 
             user.choice(scenario)
-            if not scenario.winning():
+            if scenario.winning():
                 self.create_result(Result(user.name, scenario.is_free_space_available()))
+                break
+            if scenario.undecided():
+                self.create_result(Result("no winner", False))
                 break
 
             scenario.display()
 
             npc.choice(scenario)
-            if not scenario.winning():
+            if scenario.winning():
                 self.create_result(Result(npc.name, scenario.is_free_space_available()))
+                break
+            if scenario.undecided():
+                self.create_result(Result("no winner", False))
                 break
 
     def create_result(self, result: Result):
