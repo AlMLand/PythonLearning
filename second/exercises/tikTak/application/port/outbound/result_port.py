@@ -5,7 +5,7 @@ from second.exercises.tikTak.domain.result import Result
 
 class ResultPort(ABC):
     @abstractmethod
-    def start(self):
+    def start_game(self):
         pass
 
     @abstractmethod

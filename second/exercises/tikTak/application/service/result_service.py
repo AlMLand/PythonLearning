@@ -11,7 +11,7 @@ class ResultService(ResultPort):
     def __init__(self):
         self.persistence_port = PersistenceAdaptor()
 
-    def start(self):
+    def start_game(self):
         scenario = Scenario()
         user = User("user")
         npc = Npc("npc")
@@ -21,14 +21,14 @@ class ResultService(ResultPort):
 
             user.choice(scenario)
             if not scenario.winning():
-                self.create_result(Result(user.name, True))
+                self.create_result(Result(user.name, scenario.is_free_space_available()))
                 break
 
             scenario.display()
 
             npc.choice(scenario)
             if not scenario.winning():
-                self.create_result(Result(npc.name, False))
+                self.create_result(Result(npc.name, scenario.is_free_space_available()))
                 break
 
     def create_result(self, result: Result):

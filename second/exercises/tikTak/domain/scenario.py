@@ -9,6 +9,9 @@ class Scenario:
     def display(self):
         self.game_board.display()
 
+    def is_free_space_available(self):
+        return self.game_board.is_free_space_available()
+
     def get_all_rows(self) -> list[Row]:
         return self.game_board.get_all_rows()
 
