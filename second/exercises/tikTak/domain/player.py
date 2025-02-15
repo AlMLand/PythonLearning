@@ -32,18 +32,19 @@ class Player(ABC):
                 random_cell = random.choice(random_row.get_all_cells())
                 current_input = random_cell.coordinate()
             elif current_input == "":
-                current_input: str = input(f"do your step {example}: ")
+                current_input: str = input(f"{self.name} do your step {example}: ")
             else:
-                current_input: str = input(f"your input was incorrect \"{current_input}\", try again {example}: ")
+                current_input: str = (
+                    input(f"{self.name} your input was incorrect \"{current_input}\", try again {example}: "))
 
             current_input_upper_case = current_input.upper()
             if len(current_input) != 2 or _is_not_letter(current_input_upper_case) or _is_not_digit(current_input):
-                print(f"repeat this step, you choice {current_input} is not possible")
+                print(f"{self.name} repeat this step, you choice {current_input} is not possible")
             else:
                 is_run = not self.update_choice(scenario, current_input_upper_case)
 
     def update_choice(self, scenario: Scenario, current_input: str) -> bool:
         pass
 
-    def __str__(self):
+    def __repr__(self):
         return f"Player name: {self.name}, random choice: {self.random_choice}"

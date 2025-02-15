@@ -15,16 +15,16 @@ class Scenario:
     def get_all_rows(self) -> list[Row]:
         return self.game_board.get_all_rows()
 
-    def winning(self) -> bool:
+    def winning(self, user_name: str) -> bool:
         for win_sc in self._win_scenarios():
             if win_sc:
                 self.display()
-                print("=) you won =)")
+                print(f"=) {user_name} you won =)")
                 return True
         for lose_sc in self._lose_scenarios():
             if lose_sc:
                 self.display()
-                print("=( you lose =(")
+                print(f"=) {user_name} you won =)")
                 return True
 
         return False
