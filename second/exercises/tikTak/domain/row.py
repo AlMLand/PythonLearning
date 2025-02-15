@@ -1,5 +1,5 @@
-from cell import Cell
-from play_symbol import PlaySymbol
+from second.exercises.tikTak.domain.cell import Cell
+from second.exercises.tikTak.domain.play_symbol import PlaySymbol
 
 
 class Row:

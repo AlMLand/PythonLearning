@@ -1,9 +1,9 @@
 import random
 from abc import ABC
 
-from axis_x import AxisX
-from axis_y import AxisY
-from scenario import Scenario
+from second.exercises.tikTak.domain.axis_x import AxisX
+from second.exercises.tikTak.domain.axis_y import AxisY
+from second.exercises.tikTak.domain.scenario import Scenario
 
 
 def _is_not_letter(current_input) -> bool:
@@ -44,3 +44,6 @@ class Player(ABC):
 
     def update_choice(self, scenario: Scenario, current_input: str) -> bool:
         pass
+
+    def __str__(self):
+        return f"Player name: {self.name}, random choice: {self.random_choice}"

@@ -1,6 +1,6 @@
-from play_symbol import PlaySymbol
-from player import Player
-from scenario import Scenario
+from second.exercises.tikTak.domain.play_symbol import PlaySymbol
+from second.exercises.tikTak.domain.player import Player
+from second.exercises.tikTak.domain.scenario import Scenario
 
 
 class Npc(Player):

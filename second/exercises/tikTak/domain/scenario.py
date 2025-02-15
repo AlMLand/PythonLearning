@@ -1,5 +1,5 @@
-from game_board import GameBoard
-from row import Row
+from second.exercises.tikTak.domain.game_board import GameBoard
+from second.exercises.tikTak.domain.row import Row
 
 
 class Scenario:

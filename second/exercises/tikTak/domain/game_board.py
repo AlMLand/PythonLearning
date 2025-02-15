@@ -1,7 +1,7 @@
-from axis_x import AxisX
-from axis_y import AxisY
-from cell import Cell
-from row import Row
+from second.exercises.tikTak.domain.axis_x import AxisX
+from second.exercises.tikTak.domain.axis_y import AxisY
+from second.exercises.tikTak.domain.cell import Cell
+from second.exercises.tikTak.domain.row import Row
 
 
 class GameBoard:

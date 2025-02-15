@@ -1,6 +1,6 @@
-from axis_x import AxisX
-from axis_y import AxisY
-from play_symbol import PlaySymbol
+from second.exercises.tikTak.domain.axis_x import AxisX
+from second.exercises.tikTak.domain.axis_y import AxisY
+from second.exercises.tikTak.domain.play_symbol import PlaySymbol
 
 
 class Cell:
