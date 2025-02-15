@@ -11,5 +11,5 @@ class PersistenceMapper:
         )
 
     @staticmethod
-    def map_to_result(results: [ResultEntity]) -> [Result]:
-        return [map(lambda entity: Result(entity.name, entity.is_game_board_free_space_available), results)]
+    def map_to_result(results: [ResultEntity]) -> list[Result]:
+        return list(map(lambda entity: Result(entity.name, entity.is_game_board_free_space_available), results))

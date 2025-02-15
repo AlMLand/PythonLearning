@@ -17,7 +17,7 @@ class PersistenceAdaptor(PersistencePort):
             session.add(entity)
             session.commit()
 
-    def get_all_results(self):
+    def get_all_results(self) -> list[Result]:
         with self.db_engine.create_session() as session:
             entities = session.query(ResultEntity).all()
             return self.mapper.map_to_result(entities)

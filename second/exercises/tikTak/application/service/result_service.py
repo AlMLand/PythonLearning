@@ -24,12 +24,18 @@ class ResultService(ResultPort):
                 player.choice(scenario)
                 if scenario.winning(player.name):
                     self.create_result(Result(player.name, scenario.is_free_space_available()))
+                    self.print_all_results()
                     in_progress = False
                     break
                 if scenario.undecided():
                     self.create_result(Result("no winner", False))
+                    self.print_all_results()
                     in_progress = False
                     break
+
+    def print_all_results(self):
+        for result in self.persistence_port.get_all_results():
+            print(result)
 
     @staticmethod
     def get_players(mode: Mode):

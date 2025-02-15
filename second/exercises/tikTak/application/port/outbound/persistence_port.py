@@ -9,5 +9,5 @@ class PersistencePort(ABC):
         pass
 
     @abstractmethod
-    def get_all_results(self):
+    def get_all_results(self) -> list[Result]:
         pass
