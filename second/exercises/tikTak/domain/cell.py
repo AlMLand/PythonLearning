@@ -13,8 +13,11 @@ class Cell:
         return PlaySymbol.symbol_o.value not in self.value and PlaySymbol.symbol_x.value not in self.value
 
     def update_value(self, symbol: str) -> bool:
-        self.value = "".join([character if index != 2 else symbol for index, character in enumerate(self.value)])
-        return True
+        if self.is_free():
+            self.value = "".join([character if index != 2 else symbol for index, character in enumerate(self.value)])
+            return True
+        else:
+            return False
 
     def coordinate(self):
         return f"{self.axis_x.value}{self.axis_y.value}"
