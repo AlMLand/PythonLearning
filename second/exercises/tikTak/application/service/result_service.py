@@ -16,33 +16,26 @@ class ResultService(ResultPort):
     def start_game(self, mode: Mode):
         scenario = Scenario()
 
-        user_1 = User("user_1")
-        user_2: Player
+        player_1 = User("user_1")
+        player_2: Player
         if mode is Mode.MULTI:
-            user_2 = User("user_2", Mode.MULTI)
+            player_2 = User("user_2", Mode.MULTI)
         else:
-            user_2 = Npc("npc")
+            player_2 = Npc("npc")
 
-        while True:
-            scenario.display()
-
-            user_1.choice(scenario)
-            if scenario.winning(user_1.name):
-                self.create_result(Result(user_1.name, scenario.is_free_space_available()))
-                break
-            if scenario.undecided():
-                self.create_result(Result("no winner", False))
-                break
-
-            scenario.display()
-
-            user_2.choice(scenario)
-            if scenario.winning(user_2.name):
-                self.create_result(Result(user_2.name, scenario.is_free_space_available()))
-                break
-            if scenario.undecided():
-                self.create_result(Result("no winner", False))
-                break
+        in_progress = True
+        while in_progress:
+            for user in [player_1, player_2]:
+                scenario.display()
+                user.choice(scenario)
+                if scenario.winning(user.name):
+                    self.create_result(Result(user.name, scenario.is_free_space_available()))
+                    in_progress = False
+                    break
+                if scenario.undecided():
+                    self.create_result(Result("no winner", False))
+                    in_progress = False
+                    break
 
     def create_result(self, result: Result):
         self.persistence_port.create_result(result)
