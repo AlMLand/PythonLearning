@@ -30,7 +30,7 @@ class CardPicture(Enum):
         |  {CardName.FOUR.value} |
         |   {CardRank.RANK_4.value}   |
          -------
-        f"""
+        """
     )
     picture_5: str = (
         f"""

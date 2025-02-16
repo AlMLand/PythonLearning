@@ -10,3 +10,6 @@ class Card:
         self.name = name
         self.rank = rank
         self.picture = picture
+
+    def display(self):
+        print(self.picture.value)

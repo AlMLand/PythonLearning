@@ -4,9 +4,9 @@ from second.exercises.war.domain.card.card import Card
 from second.exercises.war.domain.card.card_name import CardName
 from second.exercises.war.domain.card.card_picture import CardPicture
 from second.exercises.war.domain.card.card_rank import CardRank
-from second.exercises.war.domain.deck import Deck
+from second.exercises.war.domain.deck.deck import Deck
 from second.exercises.war.domain.suit import Suit
-from second.exercises.war.domain.suit_set import SuitSet
+from second.exercises.war.domain.suitset.suit_set import SuitSet
 
 
 class DeckTest(unittest.TestCase):

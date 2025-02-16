@@ -10,5 +10,8 @@ class Player:
     def get_card(self) -> Card:
         return self.play_set.get_random_card()
 
-    def put_cards(self, *args: Card):
-        self.play_set.put_cards(args)
+    def put_cards(self, cards: list[Card]):
+        self.play_set.put_cards(cards)
+
+    def display(self):
+        print(f"Player with name {self.name}")

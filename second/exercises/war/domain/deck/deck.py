@@ -2,7 +2,7 @@ import random
 
 from second.exercises.war.domain.card.card import Card
 from second.exercises.war.domain.play_set import PlaySet
-from second.exercises.war.domain.suit_set import SuitSet
+from second.exercises.war.domain.suitset.suit_set import SuitSet
 
 
 class Deck:
@@ -11,6 +11,7 @@ class Deck:
         self.leave_suit = leave_suit
         self.heart_suit = heart_suit
         self.bell_suit = bell_suit
+        self.whole_card_deck = self.acorn_suit.cards + self.leave_suit.cards + self.heart_suit.cards + self.bell_suit.cards
 
     def split(self, player_count: int) -> [PlaySet]:
         whole_card_deck = self._randomize_whole_deck()
@@ -18,6 +19,5 @@ class Deck:
         return [PlaySet(cards) for cards in split_cards]
 
     def _randomize_whole_deck(self) -> [Card]:
-        whole_card_deck = self.acorn_suit.cards + self.leave_suit.cards + self.heart_suit.cards + self.bell_suit.cards
-        random.shuffle(whole_card_deck)
-        return whole_card_deck
+        random.shuffle(self.whole_card_deck)
+        return self.whole_card_deck

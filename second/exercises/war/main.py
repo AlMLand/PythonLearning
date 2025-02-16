@@ -1,4 +1,5 @@
 # class CardPicture(Enum): picture: str
+from second.exercises.war.application.service.game_service import GameService
 
 # class CardName(Enum): name: 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, Ace
 
@@ -29,3 +30,4 @@
 #                           def print_local_winner_name_cards()
 #                           def check_for_global_win() - def print_global_winner_name() - stop game
 #                           def wait_for_input_to_go_further()
+GameService(3).start()
