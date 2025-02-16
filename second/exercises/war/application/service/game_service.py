@@ -19,11 +19,11 @@ class GameService:
 
     def start_session(self, players: list[Player]):
         while True:
-            players_to_cards = [(player, player.get_card()) for player in players]
+            player_to_current_card = [(player, player.get_card()) for player in players]
 
-            biggest_card = 0
+            winner_card = 0
             winner_player = None
-            for player, card in players_to_cards:
+            for player, card in player_to_current_card:
                 if card is None:
                     players.remove(player)
                     print(f"player {player.name} dont have any card's and is going")
@@ -32,11 +32,11 @@ class GameService:
                 if card is not None:
                     card.display()
                     rank = card.rank.value
-                    if rank > biggest_card:
-                        biggest_card = rank
+                    if rank > winner_card:
+                        winner_card = rank
                         winner_player = player
 
-            cards = [pc[1] for pc in players_to_cards if pc[1] is not None]
+            cards = [pc[1] for pc in player_to_current_card if pc[1] is not None]
             winner_player.put_cards(cards)
 
             print(f"the round winner is {winner_player.name}")
