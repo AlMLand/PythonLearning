@@ -8,7 +8,9 @@ class PlaySet:
         self.cards = cards
         self._max_possible_amount = 52
 
-    def get_random_card(self) -> Card:
+    def get_random_card(self) -> Card | None:
+        if not self.cards:
+            return None
         random_card = random.choice(self.cards)
         self.cards.remove(random_card)
         return random_card

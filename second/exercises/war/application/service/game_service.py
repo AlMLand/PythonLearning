@@ -25,11 +25,12 @@ class GameService:
             winner_player = None
             for player, card in players_to_cards:
                 player.display()
-                card.display()
-                rank = card.rank.value
-                if rank > biggest_card:
-                    biggest_card = rank
-                    winner_player = player
+                if card is not None:
+                    card.display()
+                    rank = card.rank.value
+                    if rank > biggest_card:
+                        biggest_card = rank
+                        winner_player = player
 
             cards = [pc[1] for pc in players_to_cards]
             winner_player.put_cards(cards)
