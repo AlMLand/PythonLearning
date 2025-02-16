@@ -45,8 +45,8 @@ class GameService:
                 self._players.remove(player)
                 print(f"player {player.name} dont have any card's and is going")
                 continue
-            player.display()
-            if card is not None:
+            else:
+                player.display()
                 card.display()
                 rank = card.rank.value
                 if rank > biggest_card:
