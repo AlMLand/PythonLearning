@@ -24,8 +24,7 @@ class GameService:
         while True:
             players_to_round_cards = [(player, player.get_card()) for player in self._players]
 
-            round_winner = self._get_round_winner(players_to_round_cards)
-            cards = [pc[1] for pc in players_to_round_cards if pc[1] is not None]
+            round_winner, cards = self._get_round_winner(players_to_round_cards)
             round_winner.put_cards(cards)
             print(
                 f"the round winner is {round_winner.name}, he has {round_winner.play_set.current_cards_amount()} cards")
@@ -53,4 +52,5 @@ class GameService:
                     biggest_card = rank
                     winner = player
 
-        return winner
+        cards_to_win = [pc[1] for pc in players_to_round_cards if pc[1] is not None]
+        return winner, cards_to_win
