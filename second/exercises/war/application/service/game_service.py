@@ -24,6 +24,10 @@ class GameService:
             biggest_card = 0
             winner_player = None
             for player, card in players_to_cards:
+                if card is None:
+                    players.remove(player)
+                    print(f"player {player.name} dont have any card's and is going")
+                    continue
                 player.display()
                 if card is not None:
                     card.display()
@@ -32,7 +36,7 @@ class GameService:
                         biggest_card = rank
                         winner_player = player
 
-            cards = [pc[1] for pc in players_to_cards]
+            cards = [pc[1] for pc in players_to_cards if pc[1] is not None]
             winner_player.put_cards(cards)
 
             print(f"the round winner is {winner_player.name}")
