@@ -1,7 +1,6 @@
-from collections import Counter
-
 from second.exercises.war.domain.card.card import Card
 from second.exercises.war.domain.player.player import Player
+from second.exercises.war.domain.round.war import War
 
 
 class Round:
@@ -10,16 +9,15 @@ class Round:
         self._round_players = players.copy()
 
     def play(self):
-        cards_to_win = self.players_choice_card()
+        cards_to_win = self._players_choice_card()
 
         cards = cards_to_win
-        while Round._is_war(cards):
-            counter = Counter(card_to_win.rank for card_to_win in cards)
-            players_in_war = [player for player in self._round_players if counter[player.current_card.rank] > 1]
+        while War.is_war(cards):
+            players_in_war = War.get_players_in_war(self._round_players, cards)
 
-            if self.is_war_value_biggest(players_in_war):
+            if War.is_war_rank_biggest(self._round_players, players_in_war):
                 self._round_players = players_in_war
-                cards = self.players_choice_card()
+                cards = self._players_choice_card()
                 cards_to_win += cards
             else:
                 break
@@ -30,17 +28,7 @@ class Round:
 
         return round_winner
 
-    def is_war_value_biggest(self, players_in_war: list[Player]) -> bool:
-        max_rank_in_war = max(set([player.current_card.rank.value for player in players_in_war]))
-        max_rank_all = max([player.current_card.rank.value for player in self._round_players])
-        return max_rank_in_war >= max_rank_all
-
-    @staticmethod
-    def _is_war(cards_to_win: list[Card]) -> bool:
-        card_ranks = [card.rank.value for card in cards_to_win]
-        return len(card_ranks) != len(set(card_ranks))
-
-    def players_choice_card(self) -> list[Card]:
+    def _players_choice_card(self) -> list[Card]:
         round_cards: list[Card] = []
 
         for player in self._round_players:
