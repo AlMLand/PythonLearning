@@ -30,4 +30,12 @@ from second.exercises.war.application.service.game_service import GameService
 #                           def print_local_winner_name_cards()
 #                           def check_for_global_win() - def print_global_winner_name() - stop game
 #                           def wait_for_input_to_go_further()
+#
+# is_war()
+#   true but another value is bigger -> ignore
+#   true and another value is smaller -> do that
+#       only players in war -> get more cards
+#       check for war
+#   mozhet War class wwesti
+#
 GameService(3).start()

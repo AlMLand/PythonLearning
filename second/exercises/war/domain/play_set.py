@@ -23,3 +23,6 @@ class PlaySet:
 
     def is_max_possible_amount(self) -> bool:
         return len(self.cards) == self._max_possible_amount
+
+    def __repr__(self):
+        return f"PlaySet [cards={self.cards}]"

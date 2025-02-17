@@ -1,7 +1,7 @@
-from second.exercises.war.domain.card.card import Card
 from second.exercises.war.domain.deck.deck_builder import DeckBuilder
 from second.exercises.war.domain.player.player import Player
 from second.exercises.war.domain.player.player_builder import PlayerBuilder
+from second.exercises.war.domain.round import Round
 
 
 class GameService:
@@ -22,9 +22,7 @@ class GameService:
 
     def _start_session(self):
         while True:
-            players_to_round_cards = [(player, player.get_card()) for player in self._players]
-
-            round_winner, cards = self._get_round_winner(players_to_round_cards)
+            round_winner, cards = Round(self._players).play()
             round_winner.put_cards(cards)
             print(
                 f"the round winner is {round_winner.name}, he has {round_winner.play_set.current_cards_amount()} cards")
@@ -34,23 +32,3 @@ class GameService:
                 break
 
             # input("start next round...")
-
-    def _get_round_winner(self, players_to_round_cards: list[tuple[Player, Card]]):
-        winner = None
-        biggest_card = 0
-
-        for player, card in players_to_round_cards:
-            if card is None:
-                self._players.remove(player)
-                print(f"player {player.name} dont have any card's and is going")
-                continue
-            else:
-                player.display()
-                card.display()
-                rank = card.rank.value
-                if rank > biggest_card:
-                    biggest_card = rank
-                    winner = player
-
-        cards_to_win = [pc[1] for pc in players_to_round_cards if pc[1] is not None]
-        return winner, cards_to_win

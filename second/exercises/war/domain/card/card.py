@@ -13,3 +13,6 @@ class Card:
 
     def display(self):
         print(self.picture.value)
+
+    def __repr__(self):
+        return f"Card [suit={self.suit}, name={self.name}, rank={self.rank}, picture={self.picture}]"
