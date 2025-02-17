@@ -22,10 +22,7 @@ class GameService:
 
     def _start_session(self):
         while True:
-            round_winner, cards = Round(self._players).play()
-            round_winner.put_cards(cards)
-            print(
-                f"the round winner is {round_winner.name}, he has {round_winner.play_set.current_cards_amount()} cards")
+            round_winner = Round(self._players).play()
 
             if round_winner.play_set.is_max_possible_amount():
                 print(f"the game winner is {round_winner.name}")
