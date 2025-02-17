@@ -16,6 +16,7 @@ class Round:
         while Round._is_war(cards):
             counter = Counter(card_to_win.rank for card_to_win in cards)
             players_in_war = [player for player in self._round_players if counter[player.current_card.rank] > 1]
+            
             if self.is_war_value_bigger(players_in_war):
                 self._round_players = players_in_war
                 cards = self.players_choice_card()
@@ -50,16 +51,17 @@ class Round:
         return round_cards
 
     def _get_round_winner(self):
+        max_rank = 0
         winner = None
-        biggest_card = 0
 
         for player in self._round_players:
             player.display()
-            if player.current_card is not None:
-                player.current_card.display()
-                rank = player.current_card.rank.value
-                if rank > biggest_card:
-                    biggest_card = rank
+            card = player.current_card
+            if card is not None:
+                card.display()
+                rank = card.rank.value
+                if rank > max_rank:
+                    max_rank = rank
                     winner = player
 
         return winner
