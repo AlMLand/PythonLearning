@@ -8,7 +8,7 @@ class Player:
         self.play_set = play_set
         self.current_card = None
 
-    def get_card(self) -> Card:
+    def get_card(self) -> Card | None:
         self.current_card = self.play_set.get_random_card()
         return self.current_card
 
