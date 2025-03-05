@@ -24,3 +24,25 @@ class Directory:
                         files.append(file.name)
                         print(f"Found text: {matcher.group()} in file: {file.name}")
         return files
+
+    @staticmethod
+    def all_dirs_for_recursive(directory: pathlib.Path) -> list:
+        return [d for d in directory.iterdir() if d.is_dir()]
+
+    def find_files_recursive(self, regex: str, directory: pathlib.Path = None) -> list:
+        if directory is None:
+            directory = self.start_direction
+
+        files = []
+        for file in self.all_files(directory):
+            with open(file, "r") as reading_file:
+                content = reading_file.read()
+                matcher = re.search(regex, content)
+                if matcher:
+                    files.append(file.name)
+                    print(f"Found text: {matcher.group()} in file: {file.name}")
+
+        for subdir in self.all_dirs_for_recursive(directory):
+            files.extend(self.find_files_recursive(regex, subdir))
+
+        return files
