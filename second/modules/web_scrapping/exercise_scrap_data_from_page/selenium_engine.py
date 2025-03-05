@@ -18,26 +18,34 @@ class SeleniumEngine:
         self.driver.implicitly_wait(10)
 
     def click_by_id(self, element_id: str):
-        element = self.driver.find_element(By.ID, element_id)
-        if element.tag_name in ["button", "a"]:
-            element.click()
-            self.awaiting_redirect()
-            logger.info(f"Clicked on element with id {element_id}")
+        elements = self.driver.find_elements(By.ID, element_id)
+        if elements:
+            element = elements[0]
+            if element.tag_name in ["button", "a"]:
+                element.click()
+                self.awaiting_redirect()
+                logger.info(f"Clicked on element with id {element_id}")
+            else:
+                logger.warning(f"Element with id \"{element_id}\" is not clickable")
         else:
-            logger.error(f"Element with id {element_id} is not clickable")
+            logger.warning(f"No element found with id \"{element_id}\"")
 
     def click_by_class_name(self, class_name: str):
-        element = self.driver.find_element(By.CLASS_NAME, class_name)
-        if element.tag_name == "div":
-            anchor = element.find_element(By.TAG_NAME, "a")
-            if anchor:
-                anchor.click()
-                self.awaiting_redirect()
-                logger.info(f"Clicked on anchor element within div with class {class_name}")
+        elements = self.driver.find_elements(By.CLASS_NAME, class_name)
+        if elements:
+            element = elements[0]
+            if element.tag_name in ["div", "li"]:
+                anchor = element.find_element(By.TAG_NAME, "a")
+                if anchor:
+                    anchor.click()
+                    self.awaiting_redirect()
+                    logger.info(f"Clicked on anchor element within div with class \"{class_name}\"")
+                else:
+                    logger.warning(f"No anchor element found within div|li with class \"{class_name}\"")
             else:
-                logger.error(f"No anchor element found within div with class {class_name}")
+                logger.warning(f"Element with class \"{class_name}\" is not a div|li")
         else:
-            logger.error(f"Element with class {class_name} is not a div")
+            logger.warning(f"No element found with class \"{class_name}\"")
 
     def awaiting_redirect(self):
         WebDriverWait(self.driver, 10).until(
@@ -48,5 +56,9 @@ class SeleniumEngine:
         self.driver.get(url)
         logger.info(f"Opened page: {url}")
 
+    def get_current_url(self):
+        return self.driver.current_url
+
     def close(self):
         self.driver.quit()
+        logger.info("Closed the browser")
